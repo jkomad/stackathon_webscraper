@@ -22,6 +22,9 @@ router.post("/", async (req, res, next) => {
     //function for extracting books from the given URL
     const extractBooks = async (url) => {
       const page = await browser.newPage();
+      await page.setUserAgent(
+        "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36"
+      );
       await page.goto(url);
       console.log(`scraping ${url}`);
 
@@ -52,17 +55,12 @@ router.post("/", async (req, res, next) => {
         return books;
       });
 
-      page.close();
+      await page.close();
 
-      const results = await page.evaluate(() => {
-        const resultsSummary =
-          document.querySelector(".results-summary").innerText;
-        return resultsSummary;
-      });
-
-      page.close();
-
-      if (results.match(/280 of 100 results$/)) {
+      if (
+        url ===
+        "https://www.barnesandnoble.com/b/books/_/N-1fZ29Z8q8?Nrpp=20&page=13"
+      ) {
         console.log("terminating scraper...");
         return booksOnPage;
       } else {
@@ -75,7 +73,7 @@ router.post("/", async (req, res, next) => {
     };
     const books = await extractBooks(url);
     const newBooks = await Promise.all(
-      books.map((book) => {
+      books.slice(0, 250).map((book) => {
         return Book.create(book);
       })
     );
