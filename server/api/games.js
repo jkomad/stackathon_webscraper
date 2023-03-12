@@ -5,6 +5,15 @@ let url =
   "https://www.metacritic.com/browse/games/score/metascore/all/all/filtered";
 
 // GET /api/games
+router.get("/", async (req, res, next) => {
+  try {
+    const games = await Game.findAll();
+    res.json(games);
+  } catch (err) {
+    console.error(err.message);
+    next(err);
+  }
+});
 
 //POST /api/games
 router.post("/", async (req, res, next) => {
@@ -67,3 +76,5 @@ router.post("/", async (req, res, next) => {
     next(err);
   }
 });
+
+module.exports = router;

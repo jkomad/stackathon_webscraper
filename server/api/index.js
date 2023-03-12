@@ -2,6 +2,7 @@ const router = require("express").Router();
 
 router.use("/books", require("./books"));
 router.use("/anime", require("./anime"));
+router.use("/games", require("./games"));
 
 router.use((req, res, next) => {
   const err = new Error("API route not found!");

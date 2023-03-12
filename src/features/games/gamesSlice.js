@@ -9,7 +9,9 @@ export const fetchGames = createAsyncThunk("games/fetchGames", async () => {
 });
 
 export const scrapeGames = createAsyncThunk("games/scrapeGames", async () => {
+  console.log("Fetching games...");
   const { data } = await axios.post("/api/games");
+  console.log("Games fetched!");
   return data;
 });
 
@@ -26,3 +28,6 @@ const gamesSlice = createSlice({
       });
   },
 });
+
+export const selectGames = (state) => state.games;
+export default gamesSlice.reducer;

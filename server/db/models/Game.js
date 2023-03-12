@@ -7,11 +7,11 @@ const Game = db.define("game", {
     allowNull: false,
   },
   rank: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.STRING,
     allowNull: false,
   },
   score: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.STRING,
     allowNull: false,
   },
 });
