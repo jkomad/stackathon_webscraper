@@ -1,34 +1,42 @@
-const { db, Book, Anime, Game } = require("./server/db");
+const { db, Book, Anime, Game, Movie } = require("./server/db");
 const books = [];
 const anime = [];
 const games = [];
+const movies = [];
 
 async function seed() {
   await db.sync({ force: true });
   console.log("db synced!");
 
-  const createdBooks = await Promise.all(
+  await Promise.all(
     books.map((book) => {
       return Book.create(book);
     })
   );
 
-  const createdAnime = await Promise.all(
+  await Promise.all(
     anime.map((anime) => {
       return Anime.create(anime);
     })
   );
 
-  const createdGames = await Promise.all(
+  await Promise.all(
     games.map((game) => {
       return Game.create(game);
     })
   );
 
-  console.log(`Clear books table`);
-  console.log(`Clear anime table`);
+  await Promise.all(
+    movies.map((movie) => {
+      return Movie.create(movie);
+    })
+  );
+
+  console.log("Clear books table");
+  console.log("Clear anime table");
   console.log("Clear games table");
-  console.log(`seeded successfully`);
+  console.log("Clear movies table");
+  console.log("seeded successfully");
 }
 
 async function runSeed() {

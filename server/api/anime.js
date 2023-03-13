@@ -6,7 +6,9 @@ const url = "https://myanimelist.net/topanime.php?limit=0";
 // GET /api/anime
 router.get("/", async (req, res, next) => {
   try {
-    const anime = await Anime.findAll();
+    const anime = await Anime.findAll({
+      order: [["id", "ASC"]],
+    });
     res.json(anime);
   } catch (err) {
     console.error(err.message);

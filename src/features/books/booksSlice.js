@@ -23,7 +23,7 @@ const booksSlice = createSlice({
       return action.payload;
     });
     builder.addCase(scrapeBooks.fulfilled, (state, action) => {
-      return state;
+      return action.payload;
     });
   },
 });

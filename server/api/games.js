@@ -7,7 +7,9 @@ let url =
 // GET /api/games
 router.get("/", async (req, res, next) => {
   try {
-    const games = await Game.findAll();
+    const games = await Game.findAll({
+      order: [["id", "ASC"]],
+    });
     res.json(games);
   } catch (err) {
     console.error(err.message);
@@ -31,7 +33,7 @@ router.post("/", async (req, res, next) => {
         const gameTags = document.querySelectorAll(".clamp-summary-wrap");
         gameTags.forEach((gameTag) => {
           const title = gameTag.querySelector("a > h3").innerText;
-          const rank = gameTag.querySelector("span").innerText;
+          const rank = gameTag.querySelector("span").innerText.match(/\d+/)[0];
           const score = gameTag.querySelector("div > a > div").innerText;
           const game = {
             title,

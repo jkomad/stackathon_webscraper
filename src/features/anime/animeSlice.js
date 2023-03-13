@@ -24,7 +24,7 @@ const animeSlice = createSlice({
       return action.payload;
     });
     builder.addCase(scrapeAnime.fulfilled, (state, action) => {
-      return state;
+      return action.payload;
     });
   },
 });

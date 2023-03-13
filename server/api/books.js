@@ -7,7 +7,9 @@ const url =
 //GET /api/books
 router.get("/", async (req, res, next) => {
   try {
-    const books = await Book.findAll();
+    const books = await Book.findAll({
+      order: [["id", "ASC"]],
+    });
     res.json(books);
   } catch (err) {
     console.error(err.message);

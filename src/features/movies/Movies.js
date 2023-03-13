@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchBooks, scrapeBooks, selectBooks } from "./booksSlice";
+import { fetchMovies, scrapeMovies, selectMovies } from "./moviesSlice";
 import {
   Typography,
   Button,
@@ -14,22 +14,19 @@ import {
   Paper,
 } from "@mui/material";
 
-const Books = () => {
+const Movies = () => {
   const dispatch = useDispatch();
-  const books = useSelector(selectBooks);
-  const [fetchedBooks, setFetchedBooks] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const movies = useSelector(selectMovies);
+  const [fetchedMovies, setFetchedMovies] = useState(false);
 
   useEffect(() => {
-    dispatch(fetchBooks()).then(setFetchedBooks(false));
-    if (loading) {
-      console.log("loading...");
-    }
-    setFetchedBooks(false);
-  }, [fetchedBooks]);
+    dispatch(fetchMovies());
+    setFetchedMovies(false);
+  }, [fetchedMovies]);
 
-  const handleClick = () => {
-    dispatch(scrapeBooks()).then(setFetchedBooks(true), setLoading(true));
+  const handleClick = async () => {
+    dispatch(scrapeMovies());
+    setFetchedMovies(true);
   };
 
   return (
@@ -41,26 +38,26 @@ const Books = () => {
           boxShadow: "rgba(0, 0, 0, 0.15) 0px 5px 15px",
         }}
       >
-        <Typography variant="h6">Books (Barnes and Noble)</Typography>
-        <Button onClick={handleClick}>Fetch Books</Button>
+        <Typography variant="h6">Movies (Rotten Tomatoes)</Typography>
+        <Button onClick={handleClick}>Fetch Movies</Button>
         <TableContainer component={Paper}>
           <Table aria-label="simple table">
             <TableHead>
               <TableRow>
                 <TableCell></TableCell>
                 <TableCell align="left">Title</TableCell>
-                <TableCell align="left">Rating</TableCell>
-                <TableCell align="left">Price</TableCell>
+                <TableCell align="left">Tomatometer</TableCell>
+                <TableCell align="left">Audience Score</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {books.map((book) => {
+              {movies.map((movie) => {
                 return (
                   <TableRow>
-                    <TableCell>{book.id}</TableCell>
-                    <TableCell>{book.title}</TableCell>
-                    <TableCell>{book.rating}</TableCell>
-                    <TableCell>{book.price}</TableCell>
+                    <TableCell>{movie.id}</TableCell>
+                    <TableCell>{movie.title}</TableCell>
+                    <TableCell>{movie.tomatoMeter}</TableCell>
+                    <TableCell>{movie.audienceScore}</TableCell>
                   </TableRow>
                 );
               })}
@@ -72,4 +69,4 @@ const Books = () => {
   );
 };
 
-export default Books;
+export default Movies;

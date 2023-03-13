@@ -24,7 +24,7 @@ const gamesSlice = createSlice({
       return action.payload;
     }),
       builder.addCase(scrapeGames.fulfilled, (state, action) => {
-        return state;
+        return action.payload;
       });
   },
 });

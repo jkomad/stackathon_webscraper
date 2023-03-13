@@ -6,12 +6,12 @@ const Movie = db.define("movie", {
     type: Sequelize.STRING,
     allowNull: false,
   },
-  rank: {
-    type: Sequelize.INTEGER,
+  tomatoMeter: {
+    type: Sequelize.STRING,
     allowNull: false,
   },
-  rating: {
-    type: Sequelize.INTEGER,
+  audienceScore: {
+    type: Sequelize.STRING,
     allowNull: false,
   },
 });
