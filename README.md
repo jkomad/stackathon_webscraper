@@ -1,16 +1,23 @@
-# Web Scraping for Dummies
+## Web Scraping for Dummies
 
-### ![GitHub last commit](https://img.shields.io/github/last-commit/jkomad/web_scraping_for_dummies)
+![GitHub last commit](https://img.shields.io/github/last-commit/jkomad/web_scraping_for_dummies)
 
-## Tech Stack:
+### Tech Stack:
 
-## Description:
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) 
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) 
+![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB) 
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) 
+![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white) 
+![Webpack](https://img.shields.io/badge/webpack-%238DD6F9.svg?style=for-the-badge&logo=webpack&logoColor=black) 
+![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white) 
+![MUI](https://img.shields.io/badge/MUI-%230081CB.svg?style=for-the-badge&logo=mui&logoColor=white)
 
-### In this project, I explore the Puppeteer library available through Node.js and use a combination its built-in libraries and my knowledge of DOM manipulation and recursion to create headless web scrapers that extract data and provide meaningful insights on a few popular websites (i.e., Barnes and Noble, Metacritic, Rotten Tomatoes, etc...)
+### Description:
 
-## Usage: 
+#### In this project, I explore the Puppeteer library available through Node.js and use a combination its built-in libraries and my knowledge of DOM manipulation and recursion to create headless web scrapers that extract data and provide meaningful insights on a few popular websites (i.e., Barnes and Noble, Metacritic, Rotten Tomatoes, etc...)
 
-## License: 
+### License: 
 ##### MIT License
 
 ##### Copyright (c) 2023 John Kristofer Madrid
